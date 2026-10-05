@@ -1,20 +1,12 @@
 class Solution:
-    def merge(self, nums1, m, nums2, n):
-        i = m - 1
-        j = m + n - 1
-        k = n - 1
+    def merge(self, nums1: list[int], m: int, nums2: list[int], n: int) -> None:
+        a=[]
+        for i in range(m):
+            a.append(nums1[i])
+        for j in range(n):
+            a.append(nums2[j])
+        a.sort()
+        for i in range(m + n):
+            nums1[i] = a[i]
 
-        while i >= 0 and k >= 0:
-            if nums1[i] > nums2[k]:
-                nums1[j] = nums1[i]
-                i -= 1
-            else:
-                nums1[j] = nums2[k]
-                k -= 1
-
-            j -= 1
-
-        while k >= 0:
-            nums1[j] = nums2[k]
-            k -= 1
-            j -= 1
+        
